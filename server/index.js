@@ -17,7 +17,7 @@ module.exports = function (app) {
 
   app.post('/token', function (req, res) {
     if (req.body.username === 'erik' &&
-      req.body.passwor === 'password') {
+      req.body.password === 'password') {
       res.send({ access_token: 'secretcode' })
     } else {
       res.status(400).send({ error: 'invalid_grant' });

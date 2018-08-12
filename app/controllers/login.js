@@ -1,17 +1,16 @@
 import Controller from '@ember/controller';
-import Service from '@ember/service';
+import { inject as service } from '@ember/service';
 
 export default Controller.extend({
     loginName: null,
     password: null,
-    session: Service,
+    session: service(),
     actions: {
         authenticate() {
-            var session = this.get('session');
             var ln = this.get('loginName');
             var pw = this.get('password');
 
-            session.authenticate( ln, pw).then(() => {
+            this.get('session').authenticate(ln, pw).then(() => {
                     alert('Logged in!');
                     this.transitionToRoute('students');
                 }, (err) => {
